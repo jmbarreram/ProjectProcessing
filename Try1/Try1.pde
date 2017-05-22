@@ -20,7 +20,7 @@ void setup() {
   for(int i = 0; i < 3; i++){
     for(int j = 0; j < 3; j++){
       for(int k = 0; k < 3; k++){
-        cajas[k+(j+(i*3))*3] = new Box(scene, i, j, k);
+        cajas[k+(j+(i*3))*3] = new Box(scene, i-1, j-1, k-1);
       }
     }
   }
@@ -33,6 +33,7 @@ void setup() {
 void draw() {
   background(0);
   pushMatrix();
+  rotateX(PI);
   //translate(width/2, height/2);
   shape(s, 0, 0);
   popMatrix();

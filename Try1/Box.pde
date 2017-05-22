@@ -66,7 +66,7 @@ public class Box {
   }
   
   public void setPosition(int x, int y, int z){
-    iFrame.setPosition(new Vec(w*x-100,h*y-100,d*z-100));
+    iFrame.setPosition(new Vec(w*x,h*y,d*z));
   }
 
   public void setPosition() {
