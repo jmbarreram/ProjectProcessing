@@ -13,6 +13,7 @@
 */
 
 public class Box {
+  PGraphics canvas;
   Scene scene;
   public InteractiveFrame iFrame;
   float w, h, d;
@@ -37,17 +38,25 @@ public class Box {
     setSize();   
     setPosition(x,y,z);
   }
+  
+  public Box(PGraphics cnv, Scene scn, int x, int y, int z) {
+    canvas = cnv;
+    scene = scn;
+    iFrame = new InteractiveFrame(scn);
+    setSize();   
+    setPosition(x,y,z);
+  }
 
   public void draw() {
     pushMatrix();
     iFrame.applyWorldTransformation();
-    noFill();
-    stroke(255);
+    canvas.noFill();
+    canvas.stroke(255);
     if (scene.motionAgent().isInputGrabber(iFrame))
-      strokeWeight(3);
+      canvas.strokeWeight(3);
     else
-      strokeWeight(1);
-    box(w, h, d);
+      canvas.strokeWeight(1);
+    canvas.box(w, h, d);
     popMatrix();
   }
 
