@@ -17,6 +17,7 @@ public class Box {
   Scene scene;
   public InteractiveFrame iFrame;
   float w, h, d;
+  int x,y,z;
   int c;
 
   public Box(Scene scn, InteractiveFrame iF) {
@@ -61,9 +62,9 @@ public class Box {
   }
 
   public void setSize() {
-    w = 30;
-    h = 30;
-    d = 30;
+    w = 10;
+    h = 10;
+    d = 10;
     iFrame.setPickingPrecision(InteractiveFrame.PickingPrecision.ADAPTIVE);
   }
 
@@ -75,6 +76,9 @@ public class Box {
   }
   
   public void setPosition(int x, int y, int z){
+    this.x = x;
+    this.y = y;
+    this.z = z;
     iFrame.setPosition(new Vec(w*x,h*y,d*z));
   }
 
@@ -82,5 +86,9 @@ public class Box {
     float low = -100;
     float high = 100;
     iFrame.setPosition(new Vec(random(low, high), random(low, high), random(low, high)));
+  }
+  
+  public boolean boxOn(int x2, int y2, int z2){
+    return x == x2 && y == y2 && z == z2;
   }
 }
