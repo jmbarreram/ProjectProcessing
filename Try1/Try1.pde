@@ -101,7 +101,7 @@ void draw() {
   scene.display();
   
   auxScene.beginDraw();
-  auxCanvas.background(29, 153, 243);
+  auxCanvas.background(0, 0, 0);
   auxScene.pg().fill(255, 0, 255, 125);
   auxScene.drawFrames();
   auxScene.endDraw();
