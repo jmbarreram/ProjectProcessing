@@ -114,7 +114,7 @@ void draw() {
   canvas.rotateX(PI);
   //rotateX(PI);
   //translate(width/2, height/2);
-  canvas.shape(s,30,30);
+  //canvas.shape(s,30,30);
   //shape(s, 300,-300);
   popMatrix();
   

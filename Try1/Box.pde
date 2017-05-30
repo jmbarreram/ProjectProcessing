@@ -19,11 +19,18 @@ public class Box {
   float w, h, d;
   int x,y,z;
   int c;
+  boolean shipFlag;
+  Ship ship;
+  PShape s;
 
   public Box(Scene scn, InteractiveFrame iF) {
     scene = scn;
     iFrame = iF;
     setSize();
+    shipFlag = false;
+    
+    s = loadShape("data/spaceship/cruiser.obj");
+    s.scale(0.1);
   }
 
   public Box(Scene scn) {
@@ -31,6 +38,7 @@ public class Box {
     iFrame = new InteractiveFrame(scn);
     setSize();   
     setPosition();
+    shipFlag = false;
   }
   
   public Box(Scene scn, int x, int y, int z) {
@@ -38,6 +46,7 @@ public class Box {
     iFrame = new InteractiveFrame(scn);
     setSize();   
     setPosition(x,y,z);
+    shipFlag = false;
   }
   
   public Box(PGraphics cnv, Scene scn, int x, int y, int z) {
@@ -46,6 +55,14 @@ public class Box {
     iFrame = new InteractiveFrame(scn);
     setSize();   
     setPosition(x,y,z);
+    shipFlag = false;
+    iFrame.removeClickBindings();
+    iFrame.removeMotionBindings();
+    scene.removeBindings();
+    iFrame.setClickBinding(this, LEFT, 1, "boxCustomClick");
+    iFrame.setClickBinding(this, LEFT, 2, "boxCustomClick");
+    iFrame.setRotationSensitivity(0);
+    ship = new Ship(canvas,x,y,z);
   }
 
   public void draw() {
@@ -53,12 +70,13 @@ public class Box {
     iFrame.applyWorldTransformation();
     canvas.noFill();
     canvas.stroke(255);
-    iFrame.setRotationSensitivity(0);
     if (scene.motionAgent().isInputGrabber(iFrame))
       canvas.strokeWeight(3);
     else
       canvas.strokeWeight(1);
     canvas.box(w, h, d);
+    if (shipFlag)
+      ship.draw();
     popMatrix();
   }
 
@@ -91,5 +109,9 @@ public class Box {
   
   public boolean boxOn(int x2, int y2, int z2){
     return x == x2 && y == y2 && z == z2;
+  }
+  
+  void boxCustomClick(InteractiveFrame frame){
+    shipFlag = true;
   }
 }
