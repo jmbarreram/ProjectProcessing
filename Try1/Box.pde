@@ -53,6 +53,7 @@ public class Box {
     iFrame.applyWorldTransformation();
     canvas.noFill();
     canvas.stroke(255);
+    iFrame.setRotationSensitivity(0);
     if (scene.motionAgent().isInputGrabber(iFrame))
       canvas.strokeWeight(3);
     else
