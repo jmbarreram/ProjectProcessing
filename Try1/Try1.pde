@@ -22,9 +22,11 @@ void settings(){
 }
 
 void setup() {
-  
   canvas = createGraphics(w, h, P3D);
+  
   scene = new Scene(this, canvas);
+  scene.setGridVisualHint(false);
+  scene.setAxesVisualHint(false);
   frame1 = new InteractiveFrame(scene, "frameDrawing");
   frame1.translate(30,30);
   frame2 = new InteractiveFrame(scene, frame1, "frameDrawing");

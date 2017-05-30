@@ -83,8 +83,8 @@ public class Box {
   }
 
   public void setPosition() {
-    float low = -100;
-    float high = 100;
+    float low = -10;
+    float high = 10;
     iFrame.setPosition(new Vec(random(low, high), random(low, high), random(low, high)));
   }
   
